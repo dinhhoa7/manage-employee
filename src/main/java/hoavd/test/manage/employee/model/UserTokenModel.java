@@ -1,5 +1,11 @@
 package hoavd.test.manage.employee.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.Collection;
+import java.util.Collections;
+
 public class UserTokenModel {
   private long userId;
 
@@ -29,5 +35,9 @@ public class UserTokenModel {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role));
   }
 }

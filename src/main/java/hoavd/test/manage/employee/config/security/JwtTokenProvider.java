@@ -119,7 +119,7 @@ public class JwtTokenProvider {
       userTokenModel.getUsername().toLowerCase().trim());
     if (employee != null) {
       UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(employee, null,
-        null);
+        userTokenModel.getAuthorities());
       authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
       return authenticationToken;
     }

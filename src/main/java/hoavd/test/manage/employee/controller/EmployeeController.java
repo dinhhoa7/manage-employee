@@ -77,8 +77,7 @@ public class EmployeeController {
   }
 
   @PostMapping("/create")
-  @PreAuthorize("hasAuthority('ROLE_MANAGER')")
-  public ResponseData create(@RequestBody EmployeeRequest request){
+  public ResponseData create(@RequestBody EmployeeRequest request) {
     ResponseData responseData = new ResponseData();
     try {
       Employee employee = employeeService.create(request);
@@ -98,7 +97,6 @@ public class EmployeeController {
   }
 
   @PutMapping("/update")
-  @PreAuthorize("hasAuthority('ROLE_MANAGER')")
   public ResponseData update(@RequestBody EmployeeUpdateRequest request){
     ResponseData responseData = new ResponseData();
     try {
@@ -118,8 +116,7 @@ public class EmployeeController {
     return responseData;
   }
 
-  @DeleteMapping("/delete")
-  @PreAuthorize("hasAuthority('ROLE_MANAGER')")
+  @DeleteMapping("/delete/{id}")
   public ResponseData delete(@PathVariable long id){
     ResponseData responseData = new ResponseData();
     try {
@@ -139,7 +136,6 @@ public class EmployeeController {
   }
 
   @PostMapping("/import")
-  @PreAuthorize("hasAuthority('ROLE_MANAGER')")
   public ResponseData importData(@RequestParam("file")MultipartFile file) {
     ResponseData responseData = new ResponseData();
     try {

@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests()
       .antMatchers(HttpMethod.OPTIONS, "/**").anonymous()
       .antMatchers(config.getUriUnauthorized()).permitAll()
+      .antMatchers("/api/employee/create", "/api/employee/update", "/api/employee/delete/*", "/api/employee/import").hasRole("MANAGER")
       .anyRequest().authenticated()
       .and()
       .exceptionHandling()
